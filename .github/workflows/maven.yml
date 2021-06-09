@@ -33,7 +33,7 @@ jobs:
         echo 'Docker login'
         docker login -u $DOCKER_HUB -p $DOCKER_HUB_KEY
         echo 'runing build...'
-        docker build . -t elhoussinelg/vote:v2.3
+        docker build . -t elhoussinelg/vote:v2.4
         echo 'pushing image...'
-        docker push elhoussinelg/vote:v2.3
+        docker push elhoussinelg/vote:v2.4
         echo 'Done!'
