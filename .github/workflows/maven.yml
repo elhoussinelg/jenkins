@@ -21,5 +21,19 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Maven
+    - name: Build with Maven 
       run: mvn -B package --file pom.xml
+    - uses: actions/checkout@v2
+      name: build
+      env:
+        DOCKER_HUB: ${{ secrets.DOCKER_HUB }}
+        DOCKER_HUB_KEY: ${{ secrets.DOCKER_HUB_KEY }}
+      run: |
+        ls -l
+        echo 'Docker login'
+        docker login -u $DOCKER_HUB -p $DOCKER_HUB_KEY
+        echo 'runing build...'
+        docker build . -t elhoussinelg/vote:v2.3
+        echo 'pushing image...'
+        docker push elhoussinelg/vote:v2.3
+        echo 'Done!'
