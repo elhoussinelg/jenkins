@@ -20,10 +20,7 @@ jobs:
       with:
         java-version: '11'
         distribution: 'adopt'
-    - name: Build with Maven 
-      run: mvn -B package --file pom.xml
-    - uses: actions/checkout@v2
-      name: build
+    - name: build
       env:
         DOCKER_HUB: ${{ secrets.DOCKER_HUB }}
         DOCKER_HUB_KEY: ${{ secrets.DOCKER_HUB_KEY }}
